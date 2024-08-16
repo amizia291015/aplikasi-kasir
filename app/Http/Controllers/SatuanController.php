@@ -31,7 +31,7 @@ class SatuanController extends Controller
     {
         try{
             $request->validate([
-                'nama' => 'required|string|max:255',
+                'nama' => 'required|string|max:255|unique:satuans,nama',
             ]);
 
             $satuan = new Satuan;

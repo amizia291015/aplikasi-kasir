@@ -11,7 +11,7 @@
     <div class="section-body">
         <h2 class="section-title">Hi, {{auth()->user()->nama}}!</h2>
         <p class="section-lead">
-            Change information about yourself on this page.
+            ubah informasi tentang diri Anda di halaman ini.
         </p>
 
         <div class="row mt-sm-4">

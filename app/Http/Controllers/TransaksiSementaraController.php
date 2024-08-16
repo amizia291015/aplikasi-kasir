@@ -20,16 +20,16 @@ class TransaksiSementaraController extends Controller
     {
         $barang = Barang::all();
         $transaksi_sementara = TransaksiSementara::all();
-        $now = Carbon::now();
+        $now = Carbon::now(); //mengambil data tanggal hari ini
         $tahun_bulan = $now->year . $now->month;
         $cek = Transaksi::count();
         
         if($cek == 0){
-            $urut = 10000001;
+            $urut = 1001;
             $nomor = $tahun_bulan . $urut;
         }else {
             $ambil = Transaksi::all()->last();
-            $urut = (int)substr($ambil->kode_transaksi, -8) + 1;
+            $urut = (int)substr($ambil->kode_transaksi, -4) + 1;
             $nomor = $tahun_bulan . $urut;
         }
 

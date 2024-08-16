@@ -1,10 +1,10 @@
 <div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-            <a href="/{{auth()->user()->level}}/dashboard">Toko Kelontong</a>
+            <a href="/{{auth()->user()->level}}/dashboard">Toko Muara 5</a>
         </div>
         <div class="sidebar-brand sidebar-brand-sm">
-            <a href="/dashboard">Ak</a>
+            <a href="/{{auth()->user()->level}}/dashboard" class="nav-link"><i class="fas fa-home"></i></a>
         </div>
         <ul class="sidebar-menu">
             <li class="menu-header">Dashboard</li>

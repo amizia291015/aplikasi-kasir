@@ -91,7 +91,7 @@ class TransaksiController extends Controller
         
         $transaksi = Transaksi::whereBetween('tanggal', [$dari, $tanggalSampai])->get();
         
-        return view('laporan.cari',compact('transaksi', 'dari', 'sampai'));
+            return view('laporan.cari',compact('transaksi', 'dari', 'sampai'));
     }
     
     public function printTanggal($dari, $sampai)
@@ -111,3 +111,4 @@ class TransaksiController extends Controller
         return $pdf->stream();
     }
 }
+

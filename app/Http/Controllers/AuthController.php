@@ -25,11 +25,11 @@ class AuthController extends Controller
             $cek = User::count();
             
             if($cek == 0){
-                $urut = 100001;
+                $urut = 1001;
                 $kode = 'K-' . $tahun_bulan . $urut;
             }else {
                 $ambil = User::all()->last();
-                $urut = (int)substr($ambil->kode, -6) + 1;
+                $urut = (int)substr($ambil->kode, -4) + 1;
                 $kode = 'K-' . $tahun_bulan . $urut;
             }
 

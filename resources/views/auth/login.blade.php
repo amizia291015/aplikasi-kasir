@@ -34,7 +34,7 @@
 
                         <div class="card card-info shadow">
                             <div class="card-header">
-                                <h4 class="text-info">Toko Kelontong</h4>
+                                <h4 class="text-info">Toko Muara 5</h4>
                             </div>
                             <div class="card-body">
                                 <form method="POST" action="/postlogin" class="needs-validation">
@@ -44,7 +44,7 @@
                                         <input id="email" type="email" class="form-control" name="email" tabindex="1"
                                             autofocus placeholder="Masukkan Email">
                                         <div class="invalid-feedback">
-                                            Please fill in your email
+                                        Silahkan isi email Anda
                                         </div>
                                     </div>
 
@@ -59,7 +59,7 @@
                                             <input id="password" type="password" class="form-control" name="password"
                                                 tabindex="2" placeholder="Masukan Password">
                                             <div class="invalid-feedback">
-                                                please fill in your password
+                                                Silahkan isi Password anda
                                             </div>
                                         </div>
                                     </div>

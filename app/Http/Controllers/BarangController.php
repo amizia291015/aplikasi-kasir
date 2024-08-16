@@ -24,11 +24,11 @@ class BarangController extends Controller
         $cek = Barang::count();
 
         if($cek == 0){
-            $kode = 100001;
+            $kode = 1001;
             $kode = $tahun_bulan . $kode;
         }else {
             $ambil = Barang::all()->last();
-            $kode = (int)substr($ambil->kode, -6) + 1;
+            $kode = (int)substr($ambil->kode, -4) + 1;
             $kode = $tahun_bulan . $kode;
         }
 
@@ -47,36 +47,35 @@ class BarangController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        try{
-            $request->validate([
-                'kode' => 'required|string|max:255',
-                'nama' => 'required|string|max:255',
-                'kategori_id' => 'required|exists:kategoris,id',
-                'harga_beli' => 'required|numeric|min:0',
-                'harga_jual' => 'required|numeric|min:0',
-                'satuan_id' => 'required|exists:satuans,id', 
-                'stok' => 'required|integer|min:0',
-                'diskon' => 'nullable|numeric|min:0|max:100',
-            ]);
-    
-            $barang = new Barang;
-            $barang->kode = $request->kode;
-            $barang->nama = $request->nama;
-            $barang->kategori_id = $request->kategori_id;
-            $barang->harga_beli = $request->harga_beli;
-            $barang->harga_jual = $request->harga_jual;
-            $barang->satuan_id = $request->satuan_id;
-            $barang->stok = $request->stok;
-            $barang->diskon = $request->diskon;
-            $barang->save();
-    
-    
-            return redirect('/admin/barang')->with('sukses', 'Data Berhasil di Simpan');
-        }catch(\Exception $e){
-            return redirect('/admin/barang')->with('gagal', 'Data Tidak Berhasil di Simpan. Pesan Kesalahan: '.$e->getMessage());
-        }
+{
+    try {
+        $request->validate([
+            'kode' => 'required|string|max:255',
+            'nama' => 'required|string|max:255|unique:barangs,nama',
+            'kategori_id' => 'required|exists:kategoris,id',
+            'harga_beli' => 'required|numeric|min:0',
+            'harga_jual' => 'required|numeric|min:0',
+            'satuan_id' => 'required|exists:satuans,id',
+            'stok' => 'required|integer|min:0',
+            'diskon' => 'nullable|numeric|min:0|max:100',
+        ]);
+
+        $barang = new Barang;
+        $barang->kode = $request->kode;
+        $barang->nama = $request->nama;
+        $barang->kategori_id = $request->kategori_id;
+        $barang->harga_beli = $request->harga_beli;
+        $barang->harga_jual = $request->harga_jual;
+        $barang->satuan_id = $request->satuan_id;
+        $barang->stok = $request->stok;
+        $barang->diskon = $request->diskon;
+        $barang->save();
+
+        return redirect('/admin/barang')->with('sukses', 'Data Berhasil di Simpan');
+    } catch (\Exception $e) {
+        return redirect('/admin/barang')->with('gagal', 'Data Tidak Berhasil di Simpan. Pesan Kesalahan: ' . $e->getMessage());
     }
+}
 
     /**
      * Display the specified resource.
